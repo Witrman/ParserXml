@@ -6,6 +6,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
@@ -34,7 +35,12 @@ public class Main {
             }*/
             String path = "cars.xml";
             saxParser.parse(path, handler);
-            System.out.println(mapOfNames.size());
+            for (Map.Entry<String, Integer> pair : mapOfNames.entrySet())
+            {
+                String key = pair.getKey();
+                int value = pair.getValue();
+                System.out.println(key + " : " + value);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
