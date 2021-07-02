@@ -12,14 +12,14 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser(); //для чтения xlm документа используем SAXParser
-            Set<String> setOfNames = new HashSet<>(); //используем для подсчета уникальных значений
+            SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser(); // для чтения xlm документа используем SAXParser
+            Set<String> setOfNames = new HashSet<>(); // используем для подсчета уникальных значений
             DefaultHandler handler = new DefaultHandler() {
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
-                    if (qName.equalsIgnoreCase("modification")) {  //при первом попадании на тэг modification
-                            setOfNames.add(attributes.getValue("name")); //значение атрибута name добавляется в HashSet
+                    if (qName.equalsIgnoreCase("modification")) {    // при первом попадании на тэг modification
+                            setOfNames.add(attributes.getValue("name")); // значение атрибута name добавляется в HashSet
                     }                                                           // здесь могут находится только уникальные значения
                 }
             };
